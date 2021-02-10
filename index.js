@@ -31,8 +31,8 @@ mongoose.set('useFindAndModify', false);
   const passport = require('passport');
     require('./passport');
 
-  const cors = require('cors');
-  app.use(cors());
+  //const cors = require('cors');
+  //app.use(cors());
 
   const { check, validationResult } = require('express-validator');
 
