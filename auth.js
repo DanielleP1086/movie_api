@@ -1,3 +1,9 @@
+var express = require('express')
+var cors = require('cors')
+var app = express()
+
+app.use(cors());
+
 const jwtSecret = 'your_jwt_secret';
 
 const jwt = require('jsonwebtoken'),
@@ -15,7 +21,8 @@ let generateJWTToken = (user) => {
 }
 
 module.exports = (router) => {
-  router.post('/login', (req, res) => {
+  router.post('/login',
+  cors(), (req, res) => {
     passport.authenticate('local', { session: false},
     (error, user, info) => {
       if (error || !user) {
