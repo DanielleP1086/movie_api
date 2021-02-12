@@ -32,7 +32,7 @@ mongoose.set('useFindAndModify', false);
     require('./passport');
 
   const cors = require('cors');
-  app.use(cors({ origin: '*'}));
+  app.use(cors());
 
   const { check, validationResult } = require('express-validator');
 
@@ -56,7 +56,7 @@ app.get('/documentation', (req, res) => {
   res.sendFile('/public/documentation.html', {root: __dirname});
 });
 
-app.get('/movies', passport.authenticate('jwt', { session: false }),
+app.get('/movies',
  (req, res) => {
   Movies.find().then(movies => res.json(movies));
 });
